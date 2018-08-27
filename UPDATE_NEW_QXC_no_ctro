@@ -4,7 +4,8 @@
 // @version      0.1
 // @description  try to take over the world!
 // @author       You
-// @match       http://*/*
+// @match        http://*/*
+//@updateURL   https://raw.github.com/borisCai/javascripSourse/master/qxc2.js
 // @grant        none
 // ==/UserScript==
 
@@ -19,12 +20,35 @@
     var six_pv=0.04;//四字现赔率
     var sanx_pv=0.04;//三字现赔率
     var erx_pv=0.04;//二字位赔率
- var temp_num=0;
 
-  setTimeout(funcName,500);//左边打码栏
-  setTimeout(funcName2,100);//中间码栏
+ var temp_num=0;
+ var hyname="";
+  setTimeout(funcName,100);//左边打码栏
 
  function funcName() {
+
+     //获取当前时间
+    var date = new Date();
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    var day = date.getDate();
+    if (month < 10) {
+        month = "0" + month;
+    }
+    if (day < 10) {
+        day = "0" + day;
+    }
+    var nowDate = year + "-" + month + "-" + day;
+ if(document.getElementById("myinfo") !=null){
+      hyname= document.getElementById("myinfo").rows[1].cells[1].innerText;//当前用户
+     }
+
+      var d2= "2018-11-01";
+
+        if(new Date(nowDate)> new Date(d2)){
+            alert('该功能已经失效，请续费!');
+        } else{
+
            var tb = document.getElementById("tbody2");
             if(tb !=null){
                 $.each(tb.children,function(e){
@@ -69,6 +93,8 @@
                     }
                 });
             }
+      funcName2();//中间码栏
+     }
       };
 
      function funcName2() {
@@ -118,8 +144,4 @@
             }
       };
 
-
-
-
 })();
-
