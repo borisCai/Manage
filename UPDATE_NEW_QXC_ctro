@@ -1,0 +1,166 @@
+// ==UserScript==
+// @name         UPDATE_NEW_QXC_ctro
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match       http://*/*
+// @require     https://raw.github.com/1234abc2018ab/funs/master/tochange.js
+// @grant        none
+// ==/UserScript==
+
+(function() {
+    'use strict';    
+
+
+    var tj_pv=0.04;//四定位，头奖赔率
+    var sand_pv=0.04;//三定位赔率
+    var erd_pv=0.05;//二定位赔率
+
+    var six_pv=0.04;//四字现赔率
+    var sanx_pv=0.04;//三字现赔率
+    var erx_pv=0.04;//二字位赔率
+
+     var re_id="aa3";
+
+
+    var temp_num=0;  
+    var re_date="2018-01-01";
+    var hyname="";
+
+    setTimeout(funcName,100);//左边打码栏
+
+
+    function funcName() {
+
+        //获取当前时间
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var day = date.getDate();
+        if (month < 10) {
+            month = "0" + month;
+        }
+        if (day < 10) {
+            day = "0" + day;
+        }
+        var nowDate = year + "-" + month + "-" + day;
+
+        if(document.getElementById("myinfo") !=null){
+            hyname= document.getElementById("myinfo").rows[1].cells[1].innerText;//当前用户
+            var re_arr=  func1();
+            for(var i=0;re_arr.length>i;i++){
+                if(re_arr[i].id==re_id && re_arr[i].name==hyname){
+                    re_date =re_arr[i].date;
+                    break;
+                }
+            };
+        } else{
+        re_date="2199-01-01";
+        };
+
+        if(new Date(nowDate)> new Date(re_date)){
+            alert('该功能已经失效，请续费!');
+        } else{
+            var tb = document.getElementById("tbody2");
+            if(tb !=null){
+                $.each(tb.children,function(e){
+                    var hs=tj_pv;//默认头奖比例
+                    var that=this;
+
+                    if(that.cells.length>1){
+
+                        var temp_0=that.cells[1].innerText;//赔率栏
+                        var pv= temp_0.split(':')[1];//赔率
+                        var last_pv=pv*(1-hs);//最后赔率
+
+                        var temp_1=that.cells[0].innerText;//奖码
+
+                        if(!isNaN(temp_1) && temp_1.length ==4){//头奖
+                            last_pv=String(last_pv).substring(0,3)+'0';//个位数归0
+                        }
+                        else if((temp_1.split('X')).length-1>0){ //属于定位
+                            var temp_2=(temp_1.split('X')).length-1;
+                            if(temp_2==1){//三字定
+                                hs=sand_pv;
+                                last_pv=parseInt(pv*(1-hs));
+                            } else if(temp_2==2){//二字定
+                                hs=erd_pv;
+                                last_pv=parseInt(pv*(1-hs));
+                            }
+                        }  else if((temp_1.split('现')).length-1>0){ //属于现码
+
+                            if(temp_1.length-1 ==4){//四字现
+                                hs=six_pv;
+                                last_pv=parseInt(pv*(1-hs));
+                            } else  if(temp_1.length-1 ==3){//三字现
+                                hs=sanx_pv;
+                                last_pv=parseInt(pv*(1-hs));
+                            }  else  if(temp_1.length-1 ==2){//二字现
+                                hs=erx_pv;
+                                last_pv=parseInt(pv*(1-hs));
+                            }
+                        }
+                        temp_num+=1;
+                        that.cells[1].innerText="1:"+last_pv;//修改赔率
+                    }
+                });
+            }
+            funcName2();//中间码栏
+        }
+
+
+    };
+
+    function funcName2() {
+        var tb = document.getElementById("tbody");
+        if(tb !=null){
+            $.each(tb.children,function(e){
+                var hs=tj_pv;//默认头奖比例
+                var that=this;
+
+                if(that.cells[3].innerText !='--'){
+
+                    //                         var temp_0=that.cells[1].innerText;//赔率栏
+                    var pv= that.cells[3].innerText;//赔率
+                    var last_pv=pv*(1-hs);//最后赔率
+
+                    var temp_1=that.cells[2].innerText;//奖码
+
+                    if(!isNaN(temp_1) && temp_1.length ==4){//头奖
+                        last_pv=String(last_pv).substring(0,3)+'0';//个位数归0
+                    }
+                    else if((temp_1.split('X')).length-1>0){ //属于定位
+                        var temp_2=(temp_1.split('X')).length-1;
+                        if(temp_2==1){//三字定
+                            hs=sand_pv;
+                            last_pv=parseInt(pv*(1-hs));
+                        } else if(temp_2==2){//二字定
+                            hs=erd_pv;
+                            last_pv=parseInt(pv*(1-hs));
+                        }
+                    }  else if((temp_1.split('现')).length-1>0){ //属于现码
+
+                        if(temp_1.length-2 ==4){//四字现
+                            hs=six_pv;
+                            last_pv=parseInt(pv*(1-hs));
+                        } else  if(temp_1.length-2 ==3){//三字现
+                            hs=sanx_pv;
+                            last_pv=parseInt(pv*(1-hs));
+                        }  else  if(temp_1.length-2 ==2){//二字现
+                            hs=erx_pv;
+                            last_pv=parseInt(pv*(1-hs));
+                        }
+                    }
+                    temp_num+=1;
+                    that.cells[3].innerText=last_pv;//修改赔率
+                }
+            });
+        }
+    };
+
+
+
+
+})();
+
