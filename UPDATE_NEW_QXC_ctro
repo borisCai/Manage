@@ -105,8 +105,8 @@
                         that.cells[1].innerText="1:"+last_pv;//修改赔率
                     }
                 });
+                  funcName2();//中间码栏
             }
-            funcName2();//中间码栏
         }
 
 
