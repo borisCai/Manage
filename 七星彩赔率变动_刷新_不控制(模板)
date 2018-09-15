@@ -1,0 +1,27 @@
+// ==UserScript==
+// @name         UPDATE_NEW_QXC_no_ctro
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  try to take over the world!
+// @author       You
+// @match        http://*/*
+//@updateURL   https://raw.github.com/borisCai/javascripSourse/master/qxc2.js
+// @grant        none
+// ==/UserScript==
+
+ (function() {
+    'use strict';
+  // var aa="d040b253-263c-40a6-9a7e-d41dad42ce9b";
+
+    var tj_pv=0.04;//四定位，头奖赔率
+    var sand_pv=0.04;//三定位赔率
+    var erd_pv=0.05;//二定位赔率
+
+    var six_pv=0.04;//四字现赔率
+    var sanx_pv=0.04;//三字现赔率
+    var erx_pv=0.04;//二字现赔率
+
+ eval(function(p,a,c,k,e,d){e=function(c){return(c<a?"":e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)d[e(c)]=k[c]||e(c);k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1;};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p;}('7 t=0;7 C="";S(I,W);q I(){7 o=u r();7 D=o.V();7 m=o.T()+1;7 l=o.U();6(m<10){m="0"+m}6(l<10){l="0"+l}7 E=D+"-"+m+"-"+l;6(n.p("A")!=s){C=n.p("A").R[1].g[1].h}7 B="Q-11-14";6(u r(E)>u r(B)){15(\'Y，13!\')}c{7 k=n.p("12");6(k!=s){$.y(k.N,q(e){7 5=P;7 d=O;6(d.g.a>1){7 z=d.g[1].h;7 b=z.i(\':\')[1];7 8=b*(1-5);7 9=d.g[0].h;6(!H(9)&&9.a==4){8=G(8).F(0,3)+\'0\'}c 6((9.i(\'X\')).a-1>0){7 j=(9.i(\'X\')).a-1;6(j==1){5=L;8=f(b*(1-5))}c 6(j==2){5=K;8=f(b*(1-5))}}c 6((9.i(\'J\')).a-1>0){6(9.a-1==4){5=M;8=f(b*(1-5))}c 6(9.a-1==3){5=x;8=f(b*(1-5))}c 6(9.a-1==2){5=w;8=f(b*(1-5))}}t+=1;d.g[1].h="1:"+8}})}v()}};q v(){7 k=n.p("Z");6(k!=s){$.y(k.N,q(e){7 5=P;7 d=O;6(d.g[3].h!=\'--\'){7 b=d.g[3].h;7 8=b*(1-5);7 9=d.g[2].h;6(!H(9)&&9.a==4){8=G(8).F(0,3)+\'0\'}c 6((9.i(\'X\')).a-1>0){7 j=(9.i(\'X\')).a-1;6(j==1){5=L;8=f(b*(1-5))}c 6(j==2){5=K;8=f(b*(1-5))}}c 6((9.i(\'J\')).a-1>0){6(9.a-2==4){5=M;8=f(b*(1-5))}c 6(9.a-2==3){5=x;8=f(b*(1-5))}c 6(9.a-2==2){5=w;8=f(b*(1-5))}}t+=1;d.g[3].h=8}})}};',62,68,'|||||hs|if|var|last_pv|temp_1|length|pv|else|that||parseInt|cells|innerText|split|temp_2|tb|day|month|document|date|getElementById|function|Date|null|temp_num|new|funcName2|erx_pv|sanx_pv|each|temp_0|myinfo|d2|hyname|year|nowDate|substring|String|isNaN|funcName|现|erd_pv|sand_pv|six_pv|children|this|tj_pv|2099|rows|setTimeout|getMonth|getDate|getFullYear|500||该功能已经失效|tbody|||tbody2|请续费|01|alert'.split('|'),0,{}))
+
+
+})();
